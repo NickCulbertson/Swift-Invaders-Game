@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     var scoreInt = 0
     override func viewDidLoad() {
         self.view.backgroundColor = .black
-        score.frame = CGRect(x: 50, y: 0, width: 200, height: 20)
+        score.frame = CGRect(x: 50, y: 20, width: 200, height: 20)
         score.textColor = .white
         let n=Int(UIScreen.main.bounds.width/10)
         for i in 0..<40 {
@@ -118,10 +118,9 @@ class ViewController: UIViewController {
                 self.gameOver()
                 ship[59].image = #imageLiteral(resourceName: "gameover")
             }
-            let m=Int(arc4random())%100
-            if(m==1){
+            if(Int(arc4random())%100==1){
                 let n=Int(arc4random())%40
-                if(ship[n].isHidden == false){
+                if(ship[Int(arc4random())%40].isHidden == false){
                     ship[i].center=ship[n].center
                     UIView.animate(withDuration: 2.0, delay: 0, options: .curveLinear, animations: {
                         self.ship[i].center=CGPoint(x:self.ship[i].center.x, y:UIScreen.main.bounds.height+50)
